@@ -35,18 +35,18 @@ delim: (Optional)
 targetPropName:
 	The name of the property to populate in the target object
 </pre>
-The process is based on two Forms:<br>
-1. A Form [configured for Email Initiation](https://help.xmatters.com/ondemand/xmodwelcome/communicationplanbuilder/formconfigureemailinitiation.htm).  You should at a minimum configure the mappings for the From, Subject, and text representation of the Email body.  This is the Form named "Inbond Email Form" in the sample Communication Plan.<br>
-2. Another Form configured to be sent out with the values that are parsed out from the first Form.  This Form is called "Outbound Email Form" in the sample Communication Plan.  It has discrete properties that map to the values that will be parsed.<br>
-<br>
-The process flow is started when the "Inbound Email Form" is [initiated by Email](https://help.xmatters.com/ondemand/xmodwelcome/communicationplanbuilder/initiatingaformbyemail.htm) (xMatters receiving an email targeted to the Forms pre-defined email address).<br>
+The process is based on two Forms:
+1. A Form [configured for Email Initiation](https://help.xmatters.com/ondemand/xmodwelcome/communicationplanbuilder/formconfigureemailinitiation.htm).  You should at a minimum configure the mappings for the From, Subject, and text representation of the Email body.  This is the Form named "Inbond Email Form" in the sample Communication Plan.
+2. Another Form configured to be sent out with the values that are parsed out from the first Form.  This Form is called "Outbound Email Form" in the sample Communication Plan.  It has discrete properties that map to the values that will be parsed.
+
+The process flow is started when the "Inbound Email Form" is [initiated by Email](https://help.xmatters.com/ondemand/xmodwelcome/communicationplanbuilder/initiatingaformbyemail.htm) .  That is, xMatters receiving an email targeted to the Forms pre-defined email address.<br>
 At that point an Event is created in xMatters for that "Inbound Email Form", which in turn triggers the Outbound Integration that is associated with that Form's `Status Update Trigger`.  (See the example in the sample Communication Plan.).<br>
 The code in the trigger will call the parser and fill in the properties for the target form.<br>
 Then the code will trigger a new Event targeting the "Outbound Email Form" in our example. 
 
 # Installation
 Installation is simple.<br>
-You can either [import the Sample Communication Plan](https://help.xmatters.com/ondemand/xmodwelcome/communicationplanbuilder/exportcommplan.htm),<br>
+You can either [import the Sample Communication Plan](https://help.xmatters.com/ondemand/xmodwelcome/communicationplanbuilder/exportcommplan.htm) ,
 or you can add a [Shared Library](https://help.xmatters.com/ondemand/xmodwelcome/integrationbuilder/shared-libraries.htm) to an existing Communication Plan using the [Email_Parser.js](Email_Parser.js),<br>
 and create your own [Outbound Integration](https://help.xmatters.com/ondemand/xmodwelcome/integrationbuilder/example-outbound-updates.htm) using the [Outbound\_Integration-Parse\_Inbound\_Email.js](Outbound_Integration-Parse_Inbound_Email.js)<br>
 If you are going to try using the Sample Communication Plan, you will need to set the [Constant](https://help.xmatters.com/ondemand/xmodwelcome/integrationbuilder/constants.htm) called `EMAIL_FORM_TO_INITIATE_URL`.<br>
